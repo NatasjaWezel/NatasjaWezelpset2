@@ -14,6 +14,7 @@
         android:layout_gravity="center"
         android:fontFamily="serif-monospace"
         android:text="Pick the story you want to fill in!"
+        android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -21,76 +22,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:checkedButton="@+id/simple" >
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:orientation="horizontal">-->
+            <RadioButton
+                android:id="@+id/simple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="pick"
+                android:text="Simple" />
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical">-->
+            <RadioButton
+                android:id="@+id/tarzan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="pick"
+                android:text="Tarzan" />
 
-                <RadioButton
-                    android:id="@+id/simple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="pick"
-                    android:text="Simple" />
+            <RadioButton
+                android:id="@+id/university"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="pick"
+                android:text="University" />
 
-                <RadioButton
-                    android:id="@+id/tarzan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="pick"
-                    android:text="Tarzan" />
+            <RadioButton
+                android:id="@+id/dance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="pick"
+                android:text="Dance" />
 
-                <RadioButton
-                    android:id="@+id/university"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="pick"
-                    android:text="University" />
-            <!--</LinearLayout>-->
+            <RadioButton
+                android:id="@+id/clothes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="pick"
+                android:text="Clothes" />
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical">-->
-
-                <RadioButton
-                    android:id="@+id/dance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="pick"
-                    android:text="Dance" />
-
-                <RadioButton
-                    android:id="@+id/clothes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="pick"
-                    android:text="Clothes" />
-
-                <RadioButton
-                    android:id="@+id/randomize"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="pick"
-                    android:text="Randomize" />
-            <!--</LinearLayout>-->
-        <!--</LinearLayout>-->
-
+            <RadioButton
+                android:id="@+id/randomize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="pick"
+                android:text="Randomize" />
     </RadioGroup>
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="picked"
-        android:text="Pick this story!" />
+        android:text="Pick this story!"
+        android:layout_gravity="center"
+        android:textAlignment="center" />
 
 </LinearLayout>

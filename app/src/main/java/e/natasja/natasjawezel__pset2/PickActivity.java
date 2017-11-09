@@ -60,5 +60,6 @@ public class PickActivity extends AppCompatActivity {
         intent.putExtra("Story", story_picked);
         startActivity(intent);
         /* finish(); to make sure the old activity doesn't exist anymore */
+        finish();
     }
 }

@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:text="@string/get_started"
         android:onClick="get_started"
+        android:layout_gravity="center"
         tools:layout_editor_absoluteX="162dp"
         tools:layout_editor_absoluteY="396dp" />
 

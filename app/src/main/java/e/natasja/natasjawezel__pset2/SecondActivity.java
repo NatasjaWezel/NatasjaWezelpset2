@@ -1,5 +1,6 @@
 package e.natasja.natasjawezel__pset2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -39,30 +42,50 @@ public class SecondActivity extends AppCompatActivity {
 
         String nextPlaceholder = story.getNextPlaceholder();
         EditText placeholder = (EditText) findViewById(R.id.whatWord);
+        TextView wordType = (TextView) findViewById(R.id.wordType);
+        wordType.setText("Please typ a/an " + nextPlaceholder);
         placeholder.setHint(nextPlaceholder);
     }
 
     public void nextWord(View view) {
-        EditText Placeholder = (EditText) findViewById(R.id.whatWord);
-
-        // get filled in word and save it in the placeholder
-        story.fillInPlaceholder(Placeholder.getText().toString());
-        Placeholder.setText("");
-
-        int PlaceholderRemainingCount = story.getPlaceholderRemainingCount();
-
-        if (PlaceholderRemainingCount == 0) {
-            Intent intent = new Intent(this, PrintStoryActivity.class);
-            String text = story.toString();
-            intent.putExtra("Story", text);
-
-            startActivity(intent);
-        }
+        EditText placeholder = (EditText) findViewById(R.id.whatWord);
+        String word = placeholder.getText().toString();
 
         TextView wordsLeft = (TextView) findViewById(R.id.wordsLeft);
-        wordsLeft.setText(PlaceholderRemainingCount + " more word(s) to go!");
+        TextView wordType = (TextView) findViewById(R.id.wordType);
 
-        String nextPlaceholder = story.getNextPlaceholder();
-        Placeholder.setHint(nextPlaceholder);
+
+        if (word.equals("")) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill in a word!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else {
+
+            // get filled in word and save it in the placeholder
+            story.fillInPlaceholder(word);
+            placeholder.setText("");
+
+            int PlaceholderRemainingCount = story.getPlaceholderRemainingCount();
+
+            if (PlaceholderRemainingCount == 0) {
+                Intent intent = new Intent(this, PrintStoryActivity.class);
+                String text = story.toString();
+                intent.putExtra("Story", text);
+
+                startActivity(intent);
+                finish();
+            }
+
+            String nextPlaceholder = story.getNextPlaceholder();
+
+            wordType.setText("Please typ a/an " + nextPlaceholder);
+            wordsLeft.setText(PlaceholderRemainingCount + " more word(s) to go!");
+            placeholder.setHint(nextPlaceholder);
+
+        }
     }
 }
