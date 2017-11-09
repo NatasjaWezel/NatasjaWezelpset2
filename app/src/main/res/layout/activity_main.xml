@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/madlibs_logo"
+        app:srcCompat="@drawable/madlibs_logo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
+        android:text="@string/welcome_to_madlibs_i_will_ask_you_to_fill_in_words_to_complete_a_story_you_won_t_be_able_to_see_the_whole_story_until_you_are_done_filling_in_the_missing_words_that_s_part_of_the_fun_click_below_to_get_started"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_started"
+        android:onClick="get_started"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="396dp" />
+
+</LinearLayout>

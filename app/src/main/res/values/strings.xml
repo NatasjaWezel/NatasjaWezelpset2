@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Natasja Wezel -- pset2</string>
+    <string name="once_upon_a_time">Once upon a time...</string>
+    <string name="finished_story">Finished Story</string>
+    <string name="ok">Ok!</string>
+    <string name="fill_in_the_words_to_complete_the_story">Fill in the words to complete the story!</string>
+    <string name="welcome_to_madlibs_i_will_ask_you_to_fill_in_words_to_complete_a_story_you_won_t_be_able_to_see_the_whole_story_until_you_are_done_filling_in_the_missing_words_that_s_part_of_the_fun_click_below_to_get_started">Welcome to MadLibs! I will ask you to fill in words to complete a story. You won\'t be able to see the whole story until you are done filling in the missing words. That\'s part of the fun. Click below to get started...</string>
+    <string name="get_started">Get Started!</string>
+    <string name="madlibs_logo">MadLibs logo</string>
+</resources>
