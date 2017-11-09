@@ -3,6 +3,7 @@ package e.natasja.natasjawezel__pset2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 public class PrintStoryActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class PrintStoryActivity extends AppCompatActivity {
         String story = intent.getStringExtra("Story");
 
         TextView finished = (TextView) findViewById(R.id.Story);
-
+        finished.setMovementMethod(new ScrollingMovementMethod());
         String text = story.toString();
         finished.setText(text);
     }

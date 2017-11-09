@@ -13,12 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="serif-monospace"
-        android:text="Pick the story you want to fill in!"
+        android:text="@string/pick_the_story_you_want_to_fill_in"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,42 +31,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="pick"
-                android:text="Simple" />
+                android:text="@string/simple" />
 
             <RadioButton
                 android:id="@+id/tarzan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="pick"
-                android:text="Tarzan" />
+                android:text="@string/tarzan" />
 
             <RadioButton
                 android:id="@+id/university"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="pick"
-                android:text="University" />
+                android:text="@string/university" />
 
             <RadioButton
                 android:id="@+id/dance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="pick"
-                android:text="Dance" />
+                android:text="@string/dance" />
 
             <RadioButton
                 android:id="@+id/clothes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="pick"
-                android:text="Clothes" />
+                android:text="@string/clothes" />
 
             <RadioButton
                 android:id="@+id/randomize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="pick"
-                android:text="Randomize" />
+                android:text="@string/randomize" />
     </RadioGroup>
 
     <Button
@@ -73,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="picked"
-        android:text="Pick this story!"
+        android:text="@string/pick_this_story"
         android:layout_gravity="center"
         android:textAlignment="center" />
 

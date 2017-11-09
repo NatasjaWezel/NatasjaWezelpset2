@@ -5,16 +5,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import java.util.Random;
 
 public class PickActivity extends AppCompatActivity {
 
     public String story_picked = "";
+    RadioGroup radioGroup;
+    public String[] textArray = {"simple.txt", "tarzan.txt", "university.txt", "dance.txt", "clothes.txt"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick);
+
+        radioGroup = findViewById(R.id.radioGroup);
     }
+
 
     public void pick(View view) {
         // Is the button now checked?
@@ -24,38 +32,45 @@ public class PickActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.simple:
                 if (checked) {
-                    story_picked = "simple.txt";
+                    story_picked = textArray[0];
                 }
                     break;
             case R.id.tarzan:
                 if (checked) {
-                    story_picked = "tarzan.txt";
+                    story_picked = textArray[1];
                 }
                     break;
             case R.id.university:
                 if (checked) {
-                    story_picked = "university.txt";
+                    story_picked = textArray[2];
                 }
                     break;
             case R.id.dance:
                 if (checked) {
-                    story_picked = "dance.txt";
+                    story_picked = textArray[3];
                 }
                     break;
             case R.id.clothes:
                 if (checked) {
-                    story_picked = "clothes.txt";
+                    story_picked = textArray[4];
                 }
                     break;
             case R.id.randomize:
                 if (checked) {
-                    story_picked = "clothes.txt";
+                    Random random = new Random();
+                    int i = random.nextInt(textArray.length);
+                    story_picked = textArray[i];
                 }
                     break;
         }
     }
 
     public void picked(View view) {
+        if (story_picked.equals("")) {
+            int radioButtonID = radioGroup.getCheckedRadioButtonId();
+            View radioView = findViewById(radioButtonID);
+            radioView.performClick();
+        }
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra("Story", story_picked);
         startActivity(intent);

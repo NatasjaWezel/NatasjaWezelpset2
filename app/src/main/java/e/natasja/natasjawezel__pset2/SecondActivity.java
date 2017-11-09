@@ -16,6 +16,10 @@ import java.io.InputStream;
 
 public class SecondActivity extends AppCompatActivity {
     Story story;
+    int PlaceholderRemainingCount;
+    TextView wordsLeft, wordType;
+    EditText whatWord;
+    String nextPlaceholder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +40,50 @@ public class SecondActivity extends AppCompatActivity {
         }
         story = new Story(inputStream);
 
+        wordsLeft = (TextView) findViewById(R.id.wordsLeft);
+        wordType = (TextView) findViewById(R.id.wordType);
+        whatWord = (EditText) findViewById(R.id.whatWord);
+
         int PlaceholderCount = story.getPlaceholderCount();
-        TextView wordsLeft = (TextView) findViewById(R.id.wordsLeft);
         wordsLeft.setText(PlaceholderCount + " more word(s) to go!");
 
-        String nextPlaceholder = story.getNextPlaceholder();
-        EditText placeholder = (EditText) findViewById(R.id.whatWord);
-        TextView wordType = (TextView) findViewById(R.id.wordType);
+        nextPlaceholder = story.getNextPlaceholder();
         wordType.setText("Please typ a/an " + nextPlaceholder);
-        placeholder.setHint(nextPlaceholder);
+        whatWord.setHint(nextPlaceholder);
+    }
+
+    @Override
+    public void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // save story
+        outState.putSerializable("story", story);
+
+        // save wordType
+        outState.putString("to type", nextPlaceholder);
+
+        // save remaining placeholders
+        outState.putInt("remainder", story.getPlaceholderRemainingCount());
+    }
+
+    @Override
+    public void onRestoreInstanceState (Bundle inState) {
+        super.onRestoreInstanceState(inState);
+
+        story = (Story) inState.getSerializable("story");
+
+        // get remaining placeholders
+        PlaceholderRemainingCount = inState.getInt("remainder");
+        nextPlaceholder = inState.getString("to type");
+        wordsLeft.setText(PlaceholderRemainingCount + " more word(s) to go!");
+
+        wordType.setText("Please typ a/an " + nextPlaceholder);
+        whatWord.setHint(nextPlaceholder);
     }
 
     public void nextWord(View view) {
         EditText placeholder = (EditText) findViewById(R.id.whatWord);
         String word = placeholder.getText().toString();
-
-        TextView wordsLeft = (TextView) findViewById(R.id.wordsLeft);
-        TextView wordType = (TextView) findViewById(R.id.wordType);
-
 
         if (word.equals("")) {
             Context context = getApplicationContext();
@@ -65,12 +95,14 @@ public class SecondActivity extends AppCompatActivity {
         }
         else {
 
-            // get filled in word and save it in the placeholder
+            // get filled in word and save it in the placeholder, clear the editText balk
             story.fillInPlaceholder(word);
-            placeholder.setText("");
+            whatWord.setText("");
 
-            int PlaceholderRemainingCount = story.getPlaceholderRemainingCount();
+            // get remaining placeholder count
+            PlaceholderRemainingCount = story.getPlaceholderRemainingCount();
 
+            // if remaining count = 0, you're done
             if (PlaceholderRemainingCount == 0) {
                 Intent intent = new Intent(this, PrintStoryActivity.class);
                 String text = story.toString();
@@ -80,11 +112,13 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
 
-            String nextPlaceholder = story.getNextPlaceholder();
+            // get next Placeholder
+            nextPlaceholder = story.getNextPlaceholder();
 
+            // set new hints and texts
             wordType.setText("Please typ a/an " + nextPlaceholder);
             wordsLeft.setText(PlaceholderRemainingCount + " more word(s) to go!");
-            placeholder.setHint(nextPlaceholder);
+            whatWord.setHint(nextPlaceholder);
 
         }
     }
